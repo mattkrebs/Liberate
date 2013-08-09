@@ -1,0 +1,94 @@
+﻿<div class="row-fluid">
+<div class="span10">
+<input ng-model="search" class="search-query" placeholder="Search" type="text" id="search" />
+</div>
+<div class="span2">
+   <h5> Count: {{objects.length}}</h5>
+</div>
+    </div>
+<table class="crud-grid table table-striped table-bordered table-condensed table-hover">
+    <tr>
+        <th style="width: 100px;">
+            <div class="btn-toolbar"><i class="btn icon-plus" ng-click="toggleAddMode()"></i></div>
+        </th>
+        <th style="width: 50px;" ng-class="{'active': order=='Id'}"><a href="#" ng-click="setOrder('Id')"></a></th>
+        <th ng-class="{'active': order=='Title'}"><a href="#" ng-click="setOrder('Title')">Title</a></th>
+        <th ng-class="{'active': order=='Year'}"><a href="#" ng-click="setOrder('Year')">Year</a></th>
+        <th ng-class="{'active': order=='Width'}"><a href="#" ng-click="setOrder('Width')">Width</a></th>
+        <th ng-class="{'active': order=='Height'}"><a href="#" ng-click="setOrder('Height')">Height</a></th>
+        <th ng-class="{'active': order=='Owner'}"><a href="#" ng-click="setOrder('Owner')">Owner</a></th>
+        <th ng-class="{'active': order=='Status'}"><a href="#" ng-click="setOrder('Status')">Status</a></th>
+    </tr>
+    <tr ng-show="addMode">
+        <td>
+            <div class="btn-toolbar">
+                <div class="btn-group">
+                    <i class="btn icon-save" ng-click="addObject()"></i>
+                    <i class="btn icon-remove" ng-click="toggleAddMode()"></i>
+                </div>
+            </div>
+        </td>
+        <td></td>
+        <td>
+            <input ng-model="object.Title" />
+        </td>
+        <td>
+            <input ng-model="object.Year" />
+        </td>
+        <td>
+            <input ng-model="object.Width" />
+        </td>
+        <td>
+            <input ng-model="object.Height" />
+        </td>
+
+        <td>
+            <input ng-model="object.Owner" />
+        </td>
+        <td>
+            <input ng-model="object.Status" />
+        </td>
+    </tr>
+    <tr ng-repeat="object in objects | filter:search | orderBy:order:decending">
+        <td>
+            <div class="btn-toolbar" ng-show="object.editMode == null || object.editMode == false">
+                <div class="btn-group">
+                    <i class="btn icon-edit" ng-click="toggleEditMode(object)"></i>
+                    <i class="btn icon-trash" ng-click="deleteObject(object)"></i>
+                </div>
+            </div>
+            <div class="btn-toolbar" ng-show="object.editMode == true">
+                <div class="btn-group">
+                    <i class="btn icon-save" ng-click="updateObject(object)"></i>
+                    <i class="btn icon-remove" ng-click="toggleEditMode(object)"></i>
+                </div>
+            </div>
+        </td>
+        <td>{{object.Id}}</td>
+        <td>
+            <span ng-show="object.editMode == null || object.editMode == false">{{object.Title}}</span>
+            <input ng-model="object.Title" ng-show="object.editMode == true" />
+        </td>
+        <td>
+            <span ng-show="object.editMode == null || object.editMode == false">{{object.Year}}</span>
+            <input ng-model="object.Year" ng-show="object.editMode == true" />
+        </td>
+        <td>
+            <span ng-show="object.editMode == null || object.editMode == false">{{object.Width}}</span>
+            <input ng-model="object.Width" ng-show="object.editMode == true" />
+        </td>
+        <td>
+            <span ng-show="object.editMode == null || object.editMode == false">{{object.Height}}</span>
+            <input ng-model="object.Height" ng-show="object.editMode == true" />
+        </td>
+
+        <td>
+            <span ng-show="object.editMode == null || object.editMode == false">{{object.Owner}}</span>
+            <input ng-model="object.Owner" ng-show="object.editMode == true" />
+        </td>
+        <td>
+            <span ng-show="object.editMode == null || object.editMode == false">{{object.Status}}</span>
+            <input ng-model="object.Status" ng-show="object.editMode == true" />
+        </td>
+    </tr>
+</table>
