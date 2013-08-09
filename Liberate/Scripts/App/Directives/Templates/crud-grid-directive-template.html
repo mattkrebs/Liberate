@@ -18,6 +18,7 @@
         <th ng-class="{'active': order=='Height'}"><a href="#" ng-click="setOrder('Height')">Height</a></th>
         <th ng-class="{'active': order=='Owner'}"><a href="#" ng-click="setOrder('Owner')">Owner</a></th>
         <th ng-class="{'active': order=='Status'}"><a href="#" ng-click="setOrder('Status')">Status</a></th>
+        <th ng-class="{'active': order=='HD'}"><a href="#" ng-click="setOrder('HD')">HD</a></th>
     </tr>
     <tr ng-show="addMode">
         <td>
@@ -47,6 +48,9 @@
         </td>
         <td>
             <input ng-model="object.Status" />
+        </td>
+         <td>
+            <input ng-model="object.HD" />
         </td>
     </tr>
     <tr ng-repeat="object in objects | filter:search | orderBy:order:decending">
@@ -86,9 +90,13 @@
             <span ng-show="object.editMode == null || object.editMode == false">{{object.Owner}}</span>
             <input ng-model="object.Owner" ng-show="object.editMode == true" />
         </td>
-        <td>
+         <td>
             <span ng-show="object.editMode == null || object.editMode == false">{{object.Status}}</span>
             <input ng-model="object.Status" ng-show="object.editMode == true" />
+        </td>
+        <td>
+            <span ng-show="object.editMode == null || object.editMode == false">{{object.HD}}</span>
+            <input ng-model="object.HD" ng-show="object.editMode == true" />
         </td>
     </tr>
 </table>

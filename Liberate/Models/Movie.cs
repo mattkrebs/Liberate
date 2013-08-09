@@ -13,7 +13,7 @@ namespace Liberate.Models
         public string Width { get; set; }
         public string Status { get; set; }
         public string Owner { get; set; }        
-        public bool HD { get; set; }
+        public bool? HD { get; set; }
         public string ImdbUrl { get; set; }
         public string PosterUrl { get; set; }
 
