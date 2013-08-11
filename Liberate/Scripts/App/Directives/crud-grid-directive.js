@@ -64,7 +64,7 @@
                     });
                 };
 
-                $scope.getData();
+                $scope.getData();   
             }]
     }
 });
@@ -80,4 +80,4 @@ app.filter('startFrom', function () {
         }
         return input.slice(start);
     };
-});
+});   
