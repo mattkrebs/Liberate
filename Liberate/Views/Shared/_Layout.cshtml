@@ -5,31 +5,37 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-   
+
 
 </head>
 <body>
-   
+
     <!-- Part 1: Wrap all page content here -->
     <div id="wrap">
 
-      <!-- Begin page content -->
-      <div class="container-fluid">
-       @RenderBody()
-      </div>
-        
-      <div id="push"></div>
+        <!-- Begin page content -->
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span6">
+                    <h1>LIBER<i class="icon-cloud-upload"></i>TE</h1>
+                </div>
+
+            </div>
+            @RenderBody()
+        </div>
+
+        <div id="push"></div>
     </div>
 
     <div id="footer">
-      <div class="container">
-        <p class="muted credit">A Three Wise Taco Guys&reg; Production </p>
-      </div>
+        <div class="container">
+            <p class="muted credit">A Three Wise Taco Guys&reg; Production </p>
+        </div>
     </div>
-        @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/toastr")
-    
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

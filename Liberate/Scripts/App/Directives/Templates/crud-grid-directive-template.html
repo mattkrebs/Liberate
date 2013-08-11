@@ -6,6 +6,10 @@
    <h5> Count: {{objects.length}}</h5>
 </div>
     </div>
+<div>
+            <button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">Previous</button>
+            <button ng-disabled="currentPage >= items.length/pageSize - 1" ng-click="currentPage=currentPage+1">Next</button>
+        </div>
 <table class="crud-grid table table-striped table-bordered table-condensed table-hover">
     <tr>
         <th style="width: 100px;">
@@ -53,7 +57,7 @@
             <input ng-model="object.HD" />
         </td>
     </tr>
-    <tr ng-repeat="object in objects | filter:search | orderBy:order:decending">
+    <tr ng-repeat="object in objects | filter:search | orderBy:order:decending | startFrom:currentPage*pageSize:pageSize | limitTo:pageSize">
         <td>
             <div class="btn-toolbar" ng-show="object.editMode == null || object.editMode == false">
                 <div class="btn-group">

@@ -9,6 +9,11 @@
                 $scope.objects = [];
                 $scope.addMode = false;
                 $scope.order = 'Title';
+                $scope.currentPage = 0;
+                $scope.pageSize = 20;
+                $scope.numberOfPages = function () {
+                    return Math.ceil($scope.items.length / $scope.pageSize);
+                }
                 $scope.decending = true;
 
                 $scope.setOrder = function (column) {
@@ -62,4 +67,17 @@
                 $scope.getData();
             }]
     }
+});
+app.filter('startFrom', function () {
+    return function (input, start, pageSize) {
+        start = +start; //parse to int
+        pageSize = +pageSize;
+        while (start > input.length) {
+            start -= pageSize;
+        }
+        if (start < 0) {
+            start = 0;
+        }
+        return input.slice(start);
+    };
 });
