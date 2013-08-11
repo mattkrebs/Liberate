@@ -8,7 +8,7 @@
             function ($scope, $element, $attrs, crudGridDataFactory, notificationFactory) {
                 $scope.objects = [];
                 $scope.addMode = false;
-                $scope.order = 'Id';
+                $scope.order = 'Title';
                 $scope.decending = true;
 
                 $scope.setOrder = function (column) {

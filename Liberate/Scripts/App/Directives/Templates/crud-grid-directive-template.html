@@ -11,7 +11,7 @@
         <th style="width: 100px;">
             <div class="btn-toolbar"><i class="btn icon-plus" ng-click="toggleAddMode()"></i></div>
         </th>
-        <th style="width: 50px;" ng-class="{'active': order=='Id'}"><a href="#" ng-click="setOrder('Id')"></a></th>
+        <th style="width: 50px;"></th>
         <th ng-class="{'active': order=='Title'}"><a href="#" ng-click="setOrder('Title')">Title</a></th>
         <th ng-class="{'active': order=='Year'}"><a href="#" ng-click="setOrder('Year')">Year</a></th>
         <th ng-class="{'active': order=='Width'}"><a href="#" ng-click="setOrder('Width')">Width</a></th>
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </td>
-        <td></td>
+        <td>&nbsp;</td>
         <td>
             <input ng-model="object.Title" />
         </td>
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </td>
-        <td>{{object.Id}}</td>
+        <td><img class="hidden-tablet" src="/Images/hd.png" width="50" ng-show="object.HD == true" /></td>
         <td>
             <span ng-show="object.editMode == null || object.editMode == false">{{object.Title}}</span>
             <input ng-model="object.Title" ng-show="object.editMode == true" />
